@@ -1,6 +1,6 @@
 name = "openkf"
 license = "MIT"
-licenselink = "https://github.com/openkf/website/blob/master/LICENSE"
+licenselink = "https://github.com/openkf/website/blob/main/LICENSE"
 description = "Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
 
 homepage = "https://github.com/openkf/website"

@@ -58,7 +58,7 @@ function suggestionFocus(e) {
 /*
 Source:
   - https://github.com/nextapps-de/flexsearch#index-documents-field-search
-  - https://raw.githack.com/nextapps-de/flexsearch/master/demo/autocomplete.html
+  - https://raw.githack.com/nextapps-de/flexsearch/main/demo/autocomplete.html
 */
 
 (function(){
