@@ -1,0 +1,41 @@
+[en]
+  languageName = "English"
+  contentDir = "content/en"
+  weight = 10
+  [en.params]
+    languageISO = "EN"
+    languageTag = "en-US"
+
+[de]
+  languageName = "German"
+  contentDir = "content/de"
+  weight = 15
+  [de.params]
+    languageISO = "DE"
+    languageTag = "de-DE"
+
+[zh]
+  languageName = "中文"
+  contentDir = "content/zh"
+  weight = 20
+  [zh.params]
+    languageISO = "ZH"
+    languageTag = "zh-CN"
+    titleAddition = "现代文档主题"
+    description = "openkf 是一个 Hugo 主题，可帮助您构建安全、快速且默认为 SEO 准备的现代文档网站。"
+    titleHome = "openkf 主题"
+    footer = "由 <a href=\"https://www.netlify.com/\">Netlify</a>、<a href=\"https://gohugo.io/\">Hugo</a> 和 <a href=\"https://getopenkf.org/\">openkf</a> 提供支持"
+    alertText = "介绍 openkf 子主题、多个 DX + UX 更新等！<a class=\"alert-link stretched-link\" href=\"https://getopenkf.org/blog/openkf-v0.2/\">查看 openkf v0.2</a>"
+
+[nl]
+  languageName = "Nederlands"
+  contentDir = "content/nl"
+  weight = 20
+  [nl.params]
+    languageISO = "NL"
+    languageTag = "nl-NL"
+    titleAddition = "Modern documentatie-thema"
+    description = "openkf is een Hugo-thema waarmee je moderne documentatie-websites kunt bouwen die veilig, snel en klaar voor SEO zijn — standaard."
+    titleHome = "openkf thema"
+    footer = "Mogelijk gemaakt door <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, en <a href=\"https://getopenkf.org/\">openkf</a>"
+    alertText = "Introductie van het openkf-kinderthema, verschillende DX + UX-updates en meer! <a class=\"alert-link stretched-link\" href=\"https://getopenkf.org/blog/openkf-v0.2/\">Bekijk openkf v0.2</a>"
