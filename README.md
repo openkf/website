@@ -6,6 +6,12 @@ To browse them locally, install hugo and run `make serve` from this directory.
 
 Read [tutorial](https://getdoks.org/docs/overview/introduction/), learning to use OpenKF document construction
 
+## start local server
+
+```bash
+npm install
+npm run start
+```
 
 ## File Directory Description
 
@@ -23,7 +29,7 @@ Read [tutorial](https://getdoks.org/docs/overview/introduction/), learning to us
 
 ## Command
 
-> **Note**💡: 
+> **Note**💡:
 > You can change the commands in the scripts section of `./package.json`.
 
 ### create
