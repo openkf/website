@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://openkf.github.io/website/sitemap.xml
+Sitemap: https://openkf.netlify.app/sitemap.xml
