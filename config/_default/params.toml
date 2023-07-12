@@ -3,8 +3,8 @@
 ## Homepage
 title = "openkf"
 titleSeparator = "-"
-titleAddition = "Modern Documentation Theme"
-description = "openkf is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
+titleAddition = "Intelligent customer service"
+description = "OpenKF is an online intelligent customer service system that enhances communication and support for enterprises and open-source communities. With its customizable features, OpenKF enables businesses to provide efficient and personalized customer service. for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
 
 ## Documentation
 docsVersion = "0.1"
@@ -65,7 +65,7 @@ defaultImage = "default-image.png" # put in `./assets/images/`
 fillImage = "1270x740 Center" # normalize image size
 
 # Footer
-footer = "Powered by <a class=\"text-muted\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a>, and <a class=\"text-muted\" href=\"https://getopenkf.org/\">openkf</a>"
+footer = "Powered by <a class=\"text-muted\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a>, and <a class=\"text-muted\" href=\"https://github.com/openkf/\">openkf</a>"
 
 # Feed
 copyRight = "Copyright (c) 2020-2021 Henk Verlinde"
@@ -73,8 +73,8 @@ copyRight = "Copyright (c) 2020-2021 Henk Verlinde"
 # Alert
 alert = false
 alertDismissable = true
-# alertText = "Introducing the openkf child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getopenkf.org/blog/openkf-v0.2/\" target=\"_blank\" rel=\"noopener\">Check out openkf v0.2</a>"
-alertText = "Introducing the openkf child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getopenkf.org/blog/openkf-v0.2/\">Check out openkf v0.2</a>"
+# alertText = "Introducing the openkf child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://github.com/openkf/blog/openkf-v0.2/\" target=\"_blank\" rel=\"noopener\">Check out openkf v0.2</a>"
+alertText = "Introducing the openkf child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://github.com/openkf/blog/openkf-v0.2/\">Check out openkf v0.2</a>"
 
 # Edit Page
 # repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster

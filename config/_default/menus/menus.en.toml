@@ -61,7 +61,7 @@
   name = "Tutorial"
   weight = 50
   identifier = "tutorial"
-  url = "https://getopenkf.org/tutorial/introduction/"
+  url = "https://github.com/openkf/tutorial/introduction/"
   parent = "get-started"
 
 [[social]]

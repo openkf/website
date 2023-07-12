@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
-description: "openkf is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
-lead: "openkf is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
+description: "OpenKF is an online intelligent customer service system that enhances communication and support for enterprises and open-source communities. With its customizable features, OpenKF enables businesses to provide efficient and personalized customer service. helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
+lead: "OpenKF is an online intelligent customer service system that enhances communication and support for enterprises and open-source communities. With its customizable features, OpenKF enables businesses to provide efficient and personalized customer service. helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
 date: 2020-10-06T08:48:57+00:00
 lastmod: 2020-10-06T08:48:57+00:00
 draft: false
@@ -21,7 +21,7 @@ There are two main ways to get started with openkf:
 
 {{< alert icon="👉" text="The Tutorial is intended for novice to intermediate users." />}}
 
-Step-by-step instructions on how to start a new openkf project. [Tutorial →](https://getopenkf.org/tutorial/introduction/)
+Step-by-step instructions on how to start a new openkf project. [Tutorial →](https://github.com/openkf/tutorial/introduction/)
 
 ### Quick Start
 
@@ -35,23 +35,23 @@ Recipes, Reference Guides, Extensions, and Showcase.
 
 ### Recipes
 
-Get instructions on how to accomplish common tasks with openkf. [Recipes →](https://getopenkf.org/docs/recipes/project-configuration/)
+Get instructions on how to accomplish common tasks with openkf. [Recipes →](https://github.com/openkf/docs/recipes/project-configuration/)
 
 ### Reference Guides
 
-Learn how to customize openkf to fully make it your own. [Reference Guides →](https://getopenkf.org/docs/reference-guides/security/)
+Learn how to customize openkf to fully make it your own. [Reference Guides →](https://github.com/openkf/docs/reference-guides/security/)
 
 ### Extensions
 
-Get instructions on how to add even more to openkf. [Extensions →](https://getopenkf.org/docs/extensions/breadcrumb-navigation/)
+Get instructions on how to add even more to openkf. [Extensions →](https://github.com/openkf/docs/extensions/breadcrumb-navigation/)
 
 ### Showcase
 
-See what others have build with openkf. [Showcase →](https://getopenkf.org/showcase/electric-blocks/)
+See what others have build with openkf. [Showcase →](https://github.com/openkf/showcase/electric-blocks/)
 
 ## Contributing
 
-Find out how to contribute to openkf. [Contributing →](https://getopenkf.org/docs/contributing/how-to-contribute/)
+Find out how to contribute to openkf. [Contributing →](https://github.com/openkf/docs/contributing/how-to-contribute/)
 
 ## Help
 
