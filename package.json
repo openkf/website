@@ -1,7 +1,7 @@
 {
   "name": "@hyas/openkf",
   "description": "openkf theme",
-  "version": "0.5.0",
+  "version": "1.22.19",
   "engines": {
     "node": ">=16.16.0"
   },
