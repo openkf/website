@@ -4,7 +4,7 @@
 title = "openkf"
 titleSeparator = "-"
 titleAddition = "Intelligent customer service"
-description = "OpenKF is an online intelligent customer service system that enhances communication and support for enterprises and open-source communities. With its customizable features, OpenKF enables businesses to provide efficient and personalized customer service. for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
+description = "OpenKF is an online intelligent customer service system that enhances communication and support for enterprises and open-source communities. "
 
 ## Documentation
 docsVersion = "0.1"
@@ -13,19 +13,19 @@ docsVersion = "0.1"
 images = ["openkf.png"]
 ogLocale = "en_US"
 domainTLD = "openkf.netlify.app"
-titleHome = "openkf Theme"
+titleHome = "openkf website"
 
 ## Twitter Cards
-twitterSite = "@getopenkf"
-twitterCreator = "@henkverlinde"
+twitterSite = "@xxw3293172751"
+twitterCreator = "@xxw3293172751"
 
 ## JSON-LD
 # schemaType = "Person"
 schemaType = "Organization"
 schemaName = "openkf"
-schemaAuthor = "Henk Verlinde"
-schemaAuthorTwitter = "https://twitter.com/henkverlinde"
-schemaAuthorLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
+schemaAuthor = ["openkf", "openim"]
+schemaAuthorTwitter = "https://twitter.com/openkf"
+schemaAuthorLinkedIn = "https://www.linkedin.com/in/cubxxw"
 schemaAuthorGitHub = "https://github.com/openkf"
 schemaLocale = "en-US"
 schemaLogo = "logo-openkf.png"
@@ -34,7 +34,7 @@ schemaLogoHeight = 512
 schemaImage = "openkf.png"
 schemaImageWidth = 1280
 schemaImageHeight = 640
-schemaTwitter = "https://twitter.com/getopenkf"
+schemaTwitter = "https://twitter.com/openkf"
 schemaLinkedIn = ""
 schemaGitHub = "https://github.com/openkf/website"
 schemaSection = "blog"
@@ -68,7 +68,7 @@ fillImage = "1270x740 Center" # normalize image size
 footer = "Powered by <a class=\"text-muted\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a>, and <a class=\"text-muted\" href=\"https://github.com/openkf/\">openkf</a>"
 
 # Feed
-copyRight = "Copyright (c) 2020-2021 Henk Verlinde"
+copyRight = "Copyright (c) 2023-2024 Henk Verlinde"
 
 # Alert
 alert = false

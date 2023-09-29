@@ -10,5 +10,5 @@ tags = ["landing page", "documentation", "blog", "minimal", "modern", "customiza
 features = ["open-source", "customer service", "LLM (Local Knowledgebase) support", "multi-channel Support", "third-party Integration", "scalable", "integrative", "free of charge", "secondary development"]
 
 [author]
-  name = "Henk Verlinde"
-  homepage = "https://henkverlinde.com"
+  name = "openkf"
+  homepage = "https://openkf.top"

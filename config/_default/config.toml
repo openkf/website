@@ -1,4 +1,4 @@
-baseurl = "https://openkf.netlify.app/"
+baseurl = "https://openkf.top"
 canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
