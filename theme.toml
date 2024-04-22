@@ -1,0 +1,14 @@
+name = "openkf"
+license = "MIT"
+licenselink = "https://github.com/openkf/website/blob/main/LICENSE"
+description = "Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
+
+homepage = "https://github.com/openkf/website"
+demosite = "https://openkf.netlify.app"
+
+tags = ["landing page", "documentation", "blog", "minimal", "modern", "customizable", "search", "dark mode", "bootstrap"]
+features = ["open-source", "customer service", "LLM (Local Knowledgebase) support", "multi-channel Support", "third-party Integration", "scalable", "integrative", "free of charge", "secondary development"]
+
+[author]
+  name = "openkf"
+  homepage = "https://openkf.top"

@@ -1,0 +1,72 @@
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+**/.DS_Store
+**/desktop.ini
+_site/**
+CNAME
+.travis.yml
+.idea/
+.vscode/
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+go.work
+
+.env
+.env.build
+/.idea/
+/.hugo_build.lock
+/public/
+_output/
+.vscode
+
+# Vim ignore
+# source: https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
+
+# swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+
+tags
+
+openim.github.io.iml
+
+nohup.out
+
+# Hugo output
+/public
+/resources/
+.hugo_build.lock
+
+# Netlify Functions build output
+package-lock.json
+/functions/
+/node_modules/
+
+# Generated files when building with make container-build
+.config/
+.npm/
+.netlify
