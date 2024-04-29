@@ -158,6 +158,7 @@ non-production-build: module-check
 ## serve: Boot the development server.
 .PHONY: serve
 serve: module-check
+	$(TOOLS_DIR)/hugo
 	$(TOOLS_DIR)/hugo server --buildFuture --environment development
 
 ## container-image: Build a container image for the preview of the website

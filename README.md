@@ -127,3 +127,11 @@ Build production website including draft and future content:
 ```bash
 npm run build:preview
 ```
+
+---
+
+```
+hugo server
+```
+
+http://localhost:1313/
