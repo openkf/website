@@ -39,6 +39,22 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Check the checked-in Markdown
         run: npm test
+      - name: Verify the documented Markdown fix command
+        shell: bash
+        run: |
+          npm run lint:markdown-fix
+          git diff --exit-code -- '*.md' 'content/**/*.md'
+      - name: Check patched Markdown parser consumers
+        shell: bash
+        run: |
+          markdown_fixture="$(mktemp -d)"
+          trap 'rm -rf "$markdown_fixture"' EXIT
+          printf '%s\n' '---' 'contract: synthetic' '---' \
+            '# Synthetic parser contract' '' 'Inline math $x^2$.' \
+            > "$markdown_fixture/parser.md"
+          npx --offline --no-install markdownlint-cli2 "$markdown_fixture/parser.md"
+      - name: Audit locked tooling for high-severity advisories
+        run: npm audit --audit-level=high --ignore-scripts
       - name: Build the production repository
         run: npm run build
       - name: Exercise the production Docsy stylesheet
