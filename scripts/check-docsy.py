@@ -53,7 +53,7 @@ def verify_output(public):
 
 def main():
     repo = Path(__file__).resolve().parent.parent
-    with tempfile.TemporaryDirectory(prefix="openkf-docsy-") as scratch:
+    with tempfile.TemporaryDirectory(prefix="openkf-docsy-", dir=repo) as scratch:
         site = Path(scratch) / "site"
         site.mkdir()
         for name in ("hugo.toml", "go.mod", "go.sum", "postcss.config.cjs"):
@@ -68,6 +68,7 @@ def main():
                 "---\ntitle: Synthetic CI dependency contract\ntype: docs\n"
                 "url: /__ci_docsy_contract/\n---\nCI_DOCSY_PRODUCTION_CONTRACT\n"
             )
+        (site / ".browserslistrc").write_text("ie 11\n", encoding="utf-8")
         style = site / "assets" / "scss" / "_styles_project.scss"
         style.parent.mkdir(parents=True, exist_ok=True)
         with style.open("a", encoding="utf-8") as target:
@@ -75,7 +76,6 @@ def main():
         env = os.environ.copy()
         env["PATH"] = str(repo / "node_modules" / ".bin") + os.pathsep + env["PATH"]
         env["NODE_PATH"] = str(repo / "node_modules")
-        env["BROWSERSLIST"] = "ie 11"
         env["HUGO_CACHEDIR"] = str(Path(scratch) / "hugo-cache")
         subprocess.run(
             ["hugo", "--source", str(site), "--destination", str(site / "public"),
