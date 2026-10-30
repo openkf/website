@@ -37,7 +37,7 @@
   "devDependencies": {
     "auto-changelog": "^2.4",
     "autoprefixer": "^10.4",
-    "markdownlint-cli2": "^0.13.0",
+    "markdownlint-cli2": "^0.24.0",
     "netlify-plugin-submit-sitemap": "^0.4.0",
     "postcss": "^8.4",
     "postcss-cli": "^11.0",
@@ -45,5 +45,11 @@
   },
   "otherDependencies": {
     "hugo": "0.121.2"
+  },
+  "overrides": {
+    "markdownlint@0.42.0": {
+      "re2js": "2.8.7",
+      "katex": "0.18.2"
+    }
   }
 }
