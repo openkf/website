@@ -1,22 +1,34 @@
-# Deploy your Hyas site to GitHub Pages
-
 name: GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: read
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-          cache: 'npm'
-
+          cache: npm
       - uses: actions/setup-go@v7
         with:
           go-version: '1.26.10'
@@ -25,18 +37,64 @@ jobs:
         with:
           hugo-version: '0.121.2'
           extended: true
-
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
-
-      - name: Check for linting errors
-        run: npm test
-
-      - name: Build production website
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Verify the main source build
+        run: |
+          npm ci --ignore-scripts
+          npm test
+          npm run build
+      - name: Read existing Pages metadata
+        id: pages
+        uses: actions/configure-pages@v5
         with:
-          github_token: ${{ secrets.BOT_GITHUB_TOKEN }}
-          publish_dir: ./public
+          enablement: false
+      - name: Preserve the existing site address
+        env:
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          python - <<'PYTHON'
+          import os
+          if os.environ['PAGES_BASE_URL'].rstrip('/') != 'https://openkf.github.io/website':
+              raise SystemExit('The configured Pages site address changed')
+          if os.environ['PAGES_BASE_PATH'].rstrip('/') != '/website':
+              raise SystemExit('The configured Pages base path changed')
+          PYTHON
+      - name: Check out the existing published content
+        uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+          path: published-site
+          persist-credentials: false
+      - name: Record the unchanged published byte tree
+        run: python scripts/check-pages-artifact.py record published-site "$RUNNER_TEMP/pages-source.json" --archive "$RUNNER_TEMP/artifact.tar"
+      - name: Upload the existing static site
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
+      - name: Download the exact artifact before deployment
+        uses: actions/download-artifact@v5
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/checked-pages-artifact
+      - name: Verify the uploaded artifact against the published tree
+        run: python scripts/check-pages-artifact.py verify "$RUNNER_TEMP/pages-source.json" "$RUNNER_TEMP/checked-pages-artifact/artifact.tar"
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the verified existing Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
