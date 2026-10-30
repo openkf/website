@@ -61,6 +61,9 @@ To apply the linter's supported fixes:
 npm run lint:markdown-fix
 ```
 
+The linter uses narrowly scoped RE2JS and KaTeX security patch overrides below
+`markdownlint` 0.42.0 until its publisher updates those dependency pins.
+
 ## CI
 
 CI installs the locked dependencies, checks Markdown, and builds the actual
