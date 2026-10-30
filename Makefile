@@ -126,7 +126,9 @@ build-preview: module-check
 ## deploy-preview: Deploy preview site via netlify
 .PHONY: deploy-preview
 deploy-preview:
-	GOMAXPROCS=1 $(TOOLS_DIR)/hugo --cleanDestinationDir --enableGitInfo --buildFuture --environment preview -b $(DEPLOY_PRIME_URL)
+	GOMAXPROCS=1 hugo --cleanDestinationDir --enableGitInfo --buildFuture --environment preview -b $(DEPLOY_PRIME_URL)
+	python scripts/netlify-headers.py preview
+	HUGO_ENV=preview $(MAKE) check-headers-file
 
 ## module-check: Check if all of the required submodules are correctly initialized.
 .PHONY: module-check
@@ -153,7 +155,14 @@ production-build: module-check
 ## non-production-build: Build the non-production site, which adds noindex headers to prevent indexing
 .PHONY: non-production-build
 non-production-build: module-check
-	GOMAXPROCS=1 $(TOOLS_DIR)/hugo --cleanDestinationDir --enableGitInfo --environment nonprod
+	GOMAXPROCS=1 hugo --cleanDestinationDir --enableGitInfo --environment nonprod
+	python scripts/netlify-headers.py preview
+	HUGO_ENV=nonprod $(MAKE) check-headers-file
+
+## check-headers-file: Validate the generated indexing headers for this context.
+.PHONY: check-headers-file
+check-headers-file:
+	@python scripts/netlify-headers.py check --environment "$${HUGO_ENV:-preview}"
 
 ## serve: Boot the development server.
 .PHONY: serve

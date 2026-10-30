@@ -43,3 +43,18 @@ jobs:
         run: npm run build
       - name: Exercise the production Docsy stylesheet
         run: npm run test:build
+      - name: Check the actual Netlify Make entries and indexing guards
+        if: runner.os == 'Linux'
+        env:
+          DEPLOY_PRIME_URL: https://example.invalid/
+        run: |
+          make non-production-build
+          grep -Fxq '  X-Robots-Tag: noindex' public/_headers
+          make deploy-preview
+          grep -Fxq '  X-Robots-Tag: noindex' public/_headers
+          make production-build
+          printf '/*\n  X-Robots-Tag: noindex\n' > public/_headers
+          if HUGO_ENV=production make check-headers-file; then
+            echo 'Production incorrectly accepted noindex output'
+            exit 1
+          fi
