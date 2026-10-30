@@ -87,3 +87,20 @@ npm run clean
 ```
 
 This removes `public` and `resources` without deleting the lock file.
+
+## GitHub Pages delivery
+
+The [existing Pages site](https://openkf.github.io/website/) continues to use
+the compiled content on `gh-pages`. Its existing pages and assets are uploaded
+as an exact verified artifact; the empty Docsy scaffold on `main` is built for
+validation and is not published over the existing site. Moving real content to
+`main` is a separate migration.
+
+Pushes to `main` and manual runs on `main` republish that `gh-pages` snapshot.
+A pull request only builds and verifies the artifact. A push to `gh-pages` does
+not automatically run the workflow stored on `main`; run it manually on `main`
+after updating the published snapshot.
+
+Deployment uses the existing `github-pages` environment and GitHub's official
+Pages artifact and short-lived token flow, preserving the same site address.
+The previous user-managed token is not copied, replaced, or exposed.
