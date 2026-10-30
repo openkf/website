@@ -1,34 +1,60 @@
-name: Hyas CI
+name: Docsy CI
 
 on:
   push:
-    branches: main
+    branches: [main]
   pull_request:
-    branches: main
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-
+    timeout-minutes: 15
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node: [16.x, 18.x]
-
     steps:
-    - name: Check out Hyas project
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js ${{ matrix.node }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node }}
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Run Hyas test script
-      run: npm test
-
-    - name: Build production website
-      run: npm run build
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: actions/setup-go@v7
+        with:
+          go-version: '1.26.10'
+          cache: false
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.121.2'
+          extended: true
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Check the checked-in Markdown
+        run: npm test
+      - name: Build the production repository
+        run: npm run build
+      - name: Exercise the production Docsy stylesheet
+        run: npm run test:build
+      - name: Check the actual Netlify Make entries and indexing guards
+        if: runner.os == 'Linux'
+        env:
+          DEPLOY_PRIME_URL: https://example.invalid/
+        run: |
+          make non-production-build
+          grep -Fxq '  X-Robots-Tag: noindex' public/_headers
+          make deploy-preview
+          grep -Fxq '  X-Robots-Tag: noindex' public/_headers
+          make production-build
+          printf '/*\n  X-Robots-Tag: noindex\n' > public/_headers
+          if HUGO_ENV=production make check-headers-file; then
+            echo 'Production incorrectly accepted noindex output'
+            exit 1
+          fi

@@ -1,137 +1,86 @@
 # OpenKF's docs
 
-OpenKF's docs are built with [hugo](https://gohugo.io/), and can be browsed live at https://kind.sigs.k8s.io/
+This repository uses [Hugo](https://gohugo.io/) and the Docsy v0.9.1 module.
+The theme is pinned in `go.mod` and `go.sum`.
 
-To browse them locally, install hugo and run `make serve` from this directory.
+## Requirements
 
-Read [tutorial](https://getdoks.org/docs/overview/introduction/), learning to use OpenKF document construction
+- Node.js 22 LTS, using the version in `.nvmrc`.
+- Hugo extended 0.121.2, matching the Netlify configuration.
+- Go 1.21.5 or later, for Hugo Modules. CI uses Go 1.26.10.
 
-## start local server
+Install Hugo extended using the
+[official installation instructions][hugo-install].
+The npm install step does not download a separate Hugo executable.
 
-```bash
-npm install
-npm run start
-```
+[hugo-install]: https://gohugo.io/installation/
 
-## File Directory Description
-
-| Directory  | Description                                                  |
-| ---------- | ------------------------------------------------------------ |
-| archetypes | Directory for creating new content files with Hugo command.  |
-| assets     | Directory for storing files that need to be processed by Hugo Pipes. |
-| config     | Directory for storing configuration directives in JSON, YAML, or TOML format. |
-| content    | Directory for storing all the content of your website. Each top-level folder is considered a content section. |
-| data       | Directory for storing configuration files that can be used by Hugo during website generation. |
-| layouts    | Directory for storing template files specifying how to render content views in the static website. |
-| static     | Directory for storing all static content such as images, CSS, JavaScript, etc. |
-| resources  | Directory for caching files to speed up the generation process. |
-
-
-## Command
-
-> **Note**💡:
-> You can change the commands in the scripts section of `./package.json`.
-
-### create
-
-Create new content for your site:
+## Install dependencies
 
 ```bash
-npm run create [path] [flags]
+npm ci
 ```
 
-See also the Hugo docs: [hugo new](https://gohugo.io/commands/hugo_new/).
+The committed lock file records the dependency tree. Keep it when cleaning
+local build output or reinstalling dependencies.
 
-### Docs based tree
-
-Create a docs based tree — with a single command:
-
-```bash
-npm run create -- --kind docs [section]
-```
-
-For example, create a docs based tree named guides:
-
-```bash
-npm run create -- --kind docs guides
-```
-
-## lint
-
-Check scripts, styles, and markdown for errors:
-
-```bash
-npm run lint
-```
-
-### scripts
-
-Check scripts for errors:
-
-```bash
-npm run lint:scripts [-- --fix]
-```
-
-### styles
-
-Check styles for errors:
-
-```bash
-npm run lint:styles [-- --fix]
-```
-
-### markdown
-
-Check markdown for errors:
-
-```bash
-npm run lint:markdown [-- --fix]
-```
-
-## clean
-
-Delete temporary directories:
-
-```bash
-npm run clean
-```
-
-## start
-
-Start local development server:
+## Preview locally
 
 ```bash
 npm run start
 ```
 
-## build
+Use `npm run create -- path/to/page.md` to add a real documentation page.
+This checkout currently has no `content` directory.
 
-Build production website:
+## Build
 
 ```bash
 npm run build
 ```
 
-### functions
+This runs Hugo in production mode, including Docsy's PostCSS stylesheet
+pipeline, and writes the result to `public`.
 
-Build Lambda functions:
-
-```bash
-npm run build:functions
-```
-
-### preview
-
-Build production website including draft and future content:
+To include draft and future pages in a preview build:
 
 ```bash
 npm run build:preview
 ```
 
----
+## Check Markdown
 
-```
-hugo server
+```bash
+npm test
 ```
 
-http://localhost:1313/
+The Markdown rules cover root Markdown files and any pages under `content`.
+To apply the linter's supported fixes:
+
+```bash
+npm run lint:markdown-fix
+```
+
+## CI
+
+CI installs the locked dependencies, checks Markdown, and builds the actual
+repository with Node.js 22 and Hugo extended on Linux, Windows, and macOS.
+It also creates a temporary synthetic Docsy page and style to check the real
+production HTML, stylesheet link, and PostCSS/autoprefixer output. That context
+is removed afterward; synthetic content is never added to the product site.
+
+## Repository layout
+
+- `hugo.toml`, `go.mod`, and `go.sum`: the pinned Docsy module.
+- `i18n`: local translation overrides.
+- `postcss.config.cjs`: the production autoprefixer plugin.
+- `package.json` and `package-lock.json`: build and Markdown tooling.
+- `scripts/check-docsy.py`: the temporary CI production build contract.
+
+## Clean build output
+
+```bash
+npm run clean
+```
+
+This removes `public` and `resources` without deleting the lock file.
