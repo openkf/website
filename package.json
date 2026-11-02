@@ -40,7 +40,7 @@
     "markdownlint-cli2": "^0.24.0",
     "netlify-plugin-submit-sitemap": "^0.4.0",
     "postcss": "^8.4",
-    "postcss-cli": "^11.0",
+    "postcss-cli": "^12.0",
     "shx": "^0.3.4"
   },
   "otherDependencies": {
